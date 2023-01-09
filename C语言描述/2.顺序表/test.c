@@ -131,7 +131,8 @@ void menu()
 	printf("******** 5.头插2           6.尾插2   *******\n");
 	printf("******** 7.头删2           8.尾删2   *******\n");
 	printf("******** 9.插入            10.删除   *******\n");
-	printf("******** 11.查找           0.退出   *******\n");
+	printf("******** 11.查找           12.打印   *******\n");
+	printf("******** 0.退出                      *******\n");
 	printf("********************************************\n");
 
 }
@@ -139,39 +140,101 @@ void menu()
 int main()
 {
 	int input = 0;
-	//创建通讯录
-	int size = 0;//通讯录里元素个数
-	struct Contact con;//con就是通讯录,里面包含1000个元素和size
-	//初始化通讯录
-	InitContact(&con);
+	//初始化
+	SL s1;
+	SeaListInit(&s1);
 	//
 	do
 	{
 		menu();
 		printf("请选择：");
+		int x;
+		int pos;
 		scanf("%d", &input);
 		switch (input)
 		{
-		case ADD:
-			Addcontact(&con);
+		case SLPushFront:
+			printf("请输入你要头插的数据，以-1结束：");
+			scanf("%d", &x);
+			while (x != -1)
+			{
+				SeqListPushFront(&s1, x);
+				scanf("%d", &x);
+			}
 			break;
-		case DEL:
-			DelContact(&con);
+		case SLPushBack:
+			printf("请输入你要尾插的数据，以-1结束：");
+			scanf("%d", &x);
+			while (x != -1)
+			{
+				SeqListPushBack(&s1, x);
+				scanf("%d", &x);
+			}
 			break;
-		case SEARCH:
-			SearchContact(&con);
+		case SLPopFront:
+			SeqListPopFront(&s1);
+			printf("删除成功！\n");
+			SeqListPrint(&s1);
 			break;
-		case MODIFY:
-			ModifyContact(&con);
+		case SLPopBack:
+			SeqListPopBack(&s1);
+			printf("删除成功！\n");
+			SeqListPrint(&s1);
 			break;
-		case SHOW:
-			ShowContact(&con);
+		case SLPushFront2:
+			printf("请输入你要头插的数据，以-1结束：");
+			scanf("%d", &x);
+			while (x != -1)
+			{
+				SeqListPushFront2(&s1, x);
+				scanf("%d", &x);
+			}
 			break;
-		case SORT:
-			SortContact(&con);
+		case SLPushBack2:
+			printf("请输入你要头插的数据，以-1结束：");
+			scanf("%d", &x);
+			while (x != -1)
+			{
+				SeqListPushBack2(&s1, x);
+				scanf("%d", &x);
+			}
+			break;
+		case SLPopFront2:
+			SeqListPopFront2(&s1);
+			printf("删除成功！");
+			SeqListPrint(&s1);
+			break;
+		case SLPopBack2:
+			SeqListPopBack2(&s1);
+			break;
+		case SLInsert:
+			printf("请输入你要插入的数据：");
+			scanf("%d", &x);
+			printf("请输入你要插入的位置：");
+			scanf("%d", &pos);
+			SeqListInsert(&s1, pos, x);
+			break;
+		case SLErase:
+			printf("请输入你要删除的位置，以-1结束：");
+			scanf("%d", &pos);
+			while (x != -1)
+			{
+				SeqListErase(&s1, pos);
+				scanf("%d", &pos);
+			}
+			break;
+		case SLFind:
+			printf("请输入你要查找的数据：");
+			scanf("%d", &x);
+			int tmp = SeqListFind(&s1, x);
+			printf("%d\n", tmp);
+			break;
+		case SLPrint:
+			SeqListPrint(&s1);
 			break;
 		case EXIT:
-			printf("退出通讯录\n");
+			DestoryContact(&s1);
+			printf("退出\n");
 			break;
 		default:
 			printf("输入错误\n");
@@ -181,11 +244,18 @@ int main()
 	return 0;
 }
 
-int main()
-{
-	//TestSeqList1();
-	//TestSeqList2();
-	//TestSeqList3();
-	//TestSeqList4();
-	return 0;
-}
+//int main()
+//{
+//	//TestSeqList1();
+//	//TestSeqList2();
+//	//TestSeqList3();
+//	//TestSeqList4();
+//	return 0;
+//}
+
+
+
+
+
+
+

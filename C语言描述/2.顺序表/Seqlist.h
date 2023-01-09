@@ -58,3 +58,22 @@ void SeqListPushBack2(SL* ps, SLDataType x);//尾插
 
 
 void SeqListErase(SL* ps, int pos);//删除任意位置元素
+
+
+
+enum Option
+{
+	EXIT,//0
+	SLPushFront,//1
+	SLPushBack,//2
+	SLPopFront,//3
+	SLPopBack,//4
+	SLPushFront2,//5
+	SLPushBack2,//6
+	SLPopFront2,//7
+	SLPopBack2,//8
+	SLInsert,//9
+	SLErase,//10
+	SLFind,//11
+	SLPrint//12
+};

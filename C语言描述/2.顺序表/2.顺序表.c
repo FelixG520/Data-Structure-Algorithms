@@ -186,3 +186,10 @@ void SeqListPopBack2(SL* ps)//βɾ
 {
 	SeqListErase(ps, ps->size-1);
 }
+
+void DestoryContact(SL* ps)
+{
+	free(ps->a);
+	ps->a = NULL;
+}
+
