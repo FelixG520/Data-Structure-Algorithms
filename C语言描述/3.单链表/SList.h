@@ -21,6 +21,9 @@ void SListPopBack(SLTNode** pphead);//头删
 SLTNode* SListFind(SLTNode* phead, SLDataType x);//查找
 void SListInsert(SLTNode** phead, SLTNode* pos, SLDataType x);//任意位置插入
 void SListErase(SLTNode** phead, SLTNode* pos);//任意位置删除
+void SListEraseAfter(SLTNode* pos);
+void SListDestory(SLTNode** pphead);
+
 
 // 有些地方也有这样的
 //// 在pos的前面插入x

@@ -62,14 +62,32 @@ void TestSList3()
 	SListPrint(plist);
 }
 
-
+void TestSList4()
+{
+	SLTNode* plist = NULL;
+	SListPushBack(&plist, 1);
+	SListPushBack(&plist, 2);
+	SListPushBack(&plist, 3);
+	SListPushBack(&plist, 4);
+	SListPrint(plist);
+	
+	SLTNode* pos;
+	pos = SListFind(plist, 3);
+	if (pos)
+	{
+		SListEraseAfter(pos);
+	}
+	SListPrint(plist);
+}
 
 
 int main()
 {
 	//TestSList1();
 	//TestSList2();
-	TestSList3();
+	//TestSList3();
+	TestSList4();
+
 
 
 	return 0;

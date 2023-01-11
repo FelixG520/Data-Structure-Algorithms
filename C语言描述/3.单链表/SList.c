@@ -29,7 +29,7 @@ SLTNode* BuyListNode(SLDataType x)
 //尾插法建立单链表
 void SListPushBack(SLTNode** pphead, SLDataType x)
 {
-
+	assert(pphead); 
 	//建立新结点
 	SLTNode* newnode = BuyListNode(x);
 	if (*pphead == NULL)
@@ -52,6 +52,7 @@ void SListPushBack(SLTNode** pphead, SLDataType x)
 //头插法建立单链表
 void SListPushFront(SLTNode** pphead, SLDataType x)
 {
+	assert(pphead);
 	//建立新结点
 	SLTNode* newnode = BuyListNode(x);
 	newnode->next = *pphead;//就是newnode->next = plist
@@ -61,6 +62,7 @@ void SListPushFront(SLTNode** pphead, SLDataType x)
 //尾删法
 void SListPopBack(SLTNode** pphead)//尾删
 {
+	assert(pphead);
 	//while(tail->next!=NULL)
 
 	//温柔处理方式
@@ -95,6 +97,8 @@ void SListPopBack(SLTNode** pphead)//尾删
 
 void SListPopBack2(SLTNode** pphead)//尾删
 {
+	assert(pphead);
+
 	//温柔处理方式
 	if (*pphead == NULL)
 	{
@@ -128,6 +132,8 @@ void SListPopBack2(SLTNode** pphead)//尾删
 //头删法
 void SListPopFront(SLTNode** pphead)//头删
 {
+	assert(pphead);
+
 	//空链表，温柔处理方式
 	if (*pphead == NULL)
 	{
@@ -157,9 +163,11 @@ SLTNode* SListFind(SLTNode* phead, SLDataType x)
 }
 
 
-//任意位置插入
+//任意位置插入 -- 在pos前插入
 void SListInsert(SLTNode** pphead, SLTNode* pos, SLDataType x)
 {
+	assert(pphead);
+
 	//考虑在第一个位置插入
 	if (pos == *pphead)
 	{
@@ -178,8 +186,11 @@ void SListInsert(SLTNode** pphead, SLTNode* pos, SLDataType x)
 	}
 }
 
+//任意位置插入 -- 在pos前插入，由于要找前驱，时间复杂度是O(n)
 void SListInsert2(SLTNode** pphead, SLTNode* pos, SLDataType x)
 {
+	assert(pphead);
+
 	SLTNode* newnode = BuyListNode(x);
 	//考虑在第一个位置插入
 	if (pos == *pphead)
@@ -199,14 +210,28 @@ void SListInsert2(SLTNode** pphead, SLTNode* pos, SLDataType x)
 	}
 }
 
+//任意位置插入 -- 在pos后插入，这个更合适也更简单
+void SListInsertAfter(SLTNode* pos, SLDataType x)
+{
+	assert(pos);
+	SLTNode* newnode = BuyListNode(x);
+
+	newnode->next = pos->next;//这两句代码不可以调换顺序
+	pos->next = newnode;
+}
 
 
 // 删除pos位置的值
 void SListErase(SLTNode** pphead, SLTNode* pos)
 {
+	assert(pphead);
+
 	if (pos == *pphead)
 	{
-		SListPopFront(pphead);
+		//SListPopFront(pphead);
+		*pphead = pos->next;
+		free(pos);
+		pos = NULL;
 	}
 	else
 	{
@@ -219,4 +244,29 @@ void SListErase(SLTNode** pphead, SLTNode* pos)
 		pre->next = pos->next;
 		free(pos);
 	}
+}
+
+//删除pos位置的后一个值
+void SListEraseAfter(SLTNode* pos)
+{
+	assert(pos->next != NULL);
+	SLTNode* next = pos->next;
+	pos->next = next->next;
+	free(next);
+	next = NULL;
+}
+
+
+//释放空间
+void SListDestory(SLTNode** pphead)
+{
+	assert(pphead);
+	SLTNode* cur = *pphead;
+	while (cur)
+	{
+		SLTNode* next = cur->next;
+		free(cur);
+		cur = next;
+	}
+	*pphead = NULL;
 }
