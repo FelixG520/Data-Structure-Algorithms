@@ -166,3 +166,98 @@ struct ListNode* mergeTwoLists(struct ListNode* l1,struct ListNode* l2)
     }
     return head;
 }
+
+
+
+//**************************************************************************
+
+#include <cstddef>
+#include <cstdlib>
+ struct ListNode {
+     int val;
+     struct ListNode *next;
+     ListNode(int x) : val(x), next(NULL) {}
+ };
+class Partition
+{
+public:
+    ListNode* partition(ListNode* pHead, int x)
+    {
+        struct ListNode* lessHead, * lessTail, * greaterHead, * greaterTail;
+        //开一个哨兵位的头节点，方便尾插
+        lessHead = lessTail = (struct ListNode*)malloc(sizeof(struct ListNode));
+        lessTail->next = NULL;
+        greaterHead = greaterTail = (struct ListNode*)malloc(sizeof(struct ListNode));
+        greaterTail->next = NULL;
+        struct ListNode* cur = pHead;
+        while (cur)
+        {
+            if (cur->val < x)
+            {
+                lessTail->next = cur;
+                lessTail = cur;
+            }
+            else
+            {
+                greaterTail->next = cur;
+                greaterTail = cur;
+            }
+            cur = cur->next;
+        }
+        lessTail->next = greaterHead->next;
+        greaterTail->next = NULL;//一定要考虑成环的情况，要把原链表的尾结点置空
+
+        struct ListNode* newHead = lessHead->next;
+        free(lessHead);
+        free(greaterHead);
+        return newHead;
+    }
+};
+
+
+//******************************************************************************
+struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB)
+{
+    struct ListNode* tailA = headA;
+    struct ListNode* tailB = headB;
+    int lenA = 1;
+    while (tailA->next)
+    {
+        ++lenA;
+        tailA = tailA->next;
+    }
+    int lenB = 1;
+
+    while (tailB->next)
+    {
+        lenB++;
+        tailB->next;
+    }
+    if (tailA != tailB)
+    {
+        return NULL;
+    }
+    //距离差
+    int gap = abs(lenA - lenB);
+    //长的先走差距步，再同时走找交点
+    int lenA = 1;
+    struct ListNode* longList = headA;//假设A长
+    struct ListNode* shortList = headB;
+    if (lenA < lenB)//如果A短，就把A给shortList
+    {
+        shortList = headA;
+        longList = headB;
+    }
+    //长的先走差距步
+    while (gap--)
+    {
+        longList = longList->next;
+    }
+
+    while (longList!=shortList)
+    {
+        longList = longList->next;
+        shortList = shortList->next;
+    }
+    return longList;
+}
