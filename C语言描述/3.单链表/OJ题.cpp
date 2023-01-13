@@ -261,3 +261,112 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
     }
     return longList;
 }
+
+//*************************************************************************
+bool hasCycle(struct ListNode* head)
+{
+    struct ListNode* slow = head, * fast = head;
+    while (fast && fast->next)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow = fast)//相遇，就是环
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+//***********************************************************************
+struct ListNode* detectCycle(struct ListNode* head)
+{
+    struct ListNode* slow = head, *fast = head;
+    while (fast && fast->next)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow = fast)//相遇，带环
+        {
+            struct ListNode* meet = slow;
+            //公式证明的
+            while (slow != head)
+            {
+                meet = meet->next;
+                head = head->next;
+            }
+            return meet;
+        }
+    }
+    return NULL;//不带环
+}
+
+//******************************************************************************************
+
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
+};
+
+
+
+struct Node* copyRandomList(struct Node* head)
+{
+    //
+    struct Node* cur = head;
+    while (cur)
+    {
+        struct Node* copy = (struct Node*)malloc(sizeof(struct Node));
+        copy->val = cur->val;//copy结点的val = 原结点的val
+        //插入copy结点
+        copy->next = cur->next;
+        cur->next = copy;
+        cur = copy->next;
+    }
+    //
+    cur = head;
+    while (cur)
+    {
+        struct Node* copy = cur->next;
+        if (cur->random == NULL)
+        {
+            copy->random = NULL;
+        }
+        else
+        {
+            copy->random = cur->random->next;
+        }
+        cur = copy->next;
+    }
+    //3.把拷贝结点解下来，链接成新链表，同时恢复原链表
+    struct Node* copyHead = NULL, * copyTail = NULL;
+    cur = head;
+    while (cur)
+    {
+        struct Node* copy = cur->next;
+        struct Node* next = copy->next;
+        if (copyTail == NULL)
+        {
+            copyHead = copyTail = copy;
+        }
+        else
+        {
+            copyTail->next = copy;
+            copyTail = copy;
+        }
+        //恢复原链表
+        cur->next = next;
+        cur = next;
+    }
+    return copyHead;
+}
