@@ -24,3 +24,4 @@ int TreeSize(BTNode* root, int* psize);
 int TreeSize2(BTNode* root);
 int TreeLeafSize(BTNode* root);
 void LevelOrder(BTNode* root);
+void DestoryTree(BTNode* root);

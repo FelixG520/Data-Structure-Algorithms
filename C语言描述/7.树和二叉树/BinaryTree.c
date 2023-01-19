@@ -101,6 +101,17 @@ void LevelOrder(BTNode* root)
 	QueueDestroy(&q);
 }
 
+//后序思路（先销毁跟就会找不到左右子树）
+void DestoryTree(BTNode* root)
+{
+	if (root == NULL)
+		return;
+	DestoryTree(&root->left);
+	DestoryTree(root->right);
+	free(root);
+}
+
+
 int main()
 {
 	BTNode* A = (BTNode*)malloc(sizeof(BTNode));
