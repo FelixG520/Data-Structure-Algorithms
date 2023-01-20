@@ -37,7 +37,7 @@ void AdjustDown(int* a, int n,int root)
 
 void HeapSort(int* a, int n)
 {
-	//建堆
+	//建堆 -- 时间复杂度O(N)
 	for (int i = (n - 1 - 1) / 2; i >= 0; i--)//找到父亲结点
 	{
 		//从最后一个非叶子的子树开始建堆

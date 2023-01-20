@@ -14,6 +14,9 @@ void HeapSort(int* a, int n);
 void Swap(int* p1, int* p2);
 void AdjustDown(int* a, int n, int root);//向下调整算法
 
+void SelectSort(int* a, int n);//直接选择排序
+void BubbleSort(int* a, int n);//冒泡排序
+
 
 void PrintArray(int* a, int n);//打印
 void TestOP();// 测试排序的性能对比
