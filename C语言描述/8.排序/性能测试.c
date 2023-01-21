@@ -1,4 +1,4 @@
-#include "Sort.h"
+#include "QuickSort.h"
 
 void TestOP()
 {
@@ -23,27 +23,27 @@ void TestOP()
 
 	}
 	int begin1 = clock();// ‰≥ˆ∫¡√Î
-	InsertSort(a1, N);
+	//InsertSort(a1, N);
 	int end1 = clock();
 
 	int begin2 = clock();
-	ShellSort(a2, N);
+	//ShellSort(a2, N);
 	int end2 = clock();
 
 	int begin3 = clock();
-	SelectSort(a3, N);
+	//SelectSort(a3, N);
 	int end3 = clock();
 
 	int begin4 = clock();
-	HeapSort(a4, N);
+	//HeapSort(a4, N);
 	int end4 = clock();
 
 	int begin5= clock();
-	BubbleSort(a5, N);
+	//BubbleSort(a5, N);
 	int end5 = clock();
 
 	int begin6 = clock();
-	QuickSort(a6, 0, N - 1);
+	QuickSort_Conformity(a6, 0, N - 1);
 	int end6 = clock(); 
 
 	int begin7 = clock();

@@ -1,4 +1,4 @@
-#include "Sort.h"
+#include "QuickSort.h"
 
 void PrintArray(int* a, int n)
 {
@@ -18,10 +18,15 @@ int main()
 	//TestHeapSort();
 	//TestSelectSort();
 	//TestBubbleSort();
-	TestQuickSort();
+
+	//TestQuickSort();
+	//TestQuickSort2();
+	//TestQuickSort_Conformity();
+	//TestQuickSort_optimize();
+
 
 
 	// 测试排序的性能对比
-	//TestOP();
+	TestOP();
 	return 0;
 }
