@@ -43,7 +43,7 @@ void TestOP()
 	int end5 = clock();
 
 	int begin6 = clock();
-	//QuickSort(a6, 0, N - 1);
+	QuickSort(a6, 0, N - 1);
 	int end6 = clock(); 
 
 	int begin7 = clock();
@@ -55,15 +55,14 @@ void TestOP()
 	printf("SelectSort:%d\n", end3 - begin3);
 	printf("HeapSort:%d\n", end4 - begin4);
 	printf("BubbleSort:%d\n", end5 - begin5);
-
-	//printf("QuickSort:%d\n", end6 - begin6);
+	printf("QuickSort:%d\n", end6 - begin6);
 	//printf("MergeSort:%d\n", end7 - begin7);
 	free(a1);
 	free(a2);
 	free(a3);
 	free(a4);
 	free(a5);
-	//free(a6);
+	free(a6);
 	//free(a7);
 
 }

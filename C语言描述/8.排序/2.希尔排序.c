@@ -32,3 +32,11 @@ void ShellSort(int *a,int n)
 	}
 	
 }
+
+
+void TestShellSort()
+{
+	int a[] = { 3,5,2,7,8,6,1,9,4,0 };
+	ShellSort(a, sizeof(a) / sizeof(int));
+	PrintArray(a, sizeof(a) / sizeof(int));
+}

@@ -31,3 +31,9 @@ void InsertSort(int* a, int n)
 
 
 
+void TestInsertSort()
+{
+	int a[] = { 3,5,2,7,8,6,1,9,4,0 };
+	InsertSort(a, sizeof(a) / sizeof(int));
+	PrintArray(a, sizeof(a) / sizeof(int));
+}

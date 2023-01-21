@@ -16,6 +16,16 @@ void AdjustDown(int* a, int n, int root);//向下调整算法
 
 void SelectSort(int* a, int n);//直接选择排序
 void BubbleSort(int* a, int n);//冒泡排序
+void QuickSort(int* a, int n);//快速排序
+
+
+void TestInsertSort();
+void TestShellSort();
+void TestHeapSort();
+void TestSelectSort();
+void TestBubbleSort();
+void TestQuickSort();
+
 
 
 void PrintArray(int* a, int n);//打印

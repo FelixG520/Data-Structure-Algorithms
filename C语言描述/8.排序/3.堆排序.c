@@ -53,3 +53,10 @@ void HeapSort(int* a, int n)
 		--end;
 	}
 }
+
+void TestHeapSort()
+{
+	int a[] = { 3,5,2,7,8,6,1,9,4,0 };
+	HeapSort(a, sizeof(a) / sizeof(int));
+	PrintArray(a, sizeof(a) / sizeof(int));
+}
