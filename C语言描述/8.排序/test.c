@@ -21,9 +21,10 @@ int main()
 
 	//TestQuickSort();
 	//TestQuickSort2();
+	//TestQuickSort3();
 	//TestQuickSort_Conformity();
 	//TestQuickSort_optimize();
-
+	//TestMergeSort();
 
 
 	// 测试排序的性能对比

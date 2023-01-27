@@ -56,6 +56,28 @@ int PartSort_RLHands(int* a, int left, int right)
 	return begin;
 }
 
+//前后指针法
+int PartSort_FBHands(int* a, int left, int right)
+{
+	//三数取中
+	int index = GetMidIndex(a, left, right);
+	Swap(&a[left], &a[index]);
+
+	int key = left;
+	int pre = left, cur = left + 1;
+	while (cur <= right)
+	{
+		if (a[cur] <= a[key])
+		{
+			++pre;
+			Swap(&a[pre], &a[cur]);
+		}
+		++cur;
+	}
+	Swap(&a[key], &a[pre]);
+	return pre;
+}
+
 
 void QuickSort_Conformity(int* a, int left, int right)//快速排序
 {
@@ -63,8 +85,9 @@ void QuickSort_Conformity(int* a, int left, int right)//快速排序
 	if (left >= right)
 		return;
 
-	int keyIndex = PartSort_Trenching(a, left, right);//挖坑法
+	//int keyIndex = PartSort_Trenching(a, left, right);//挖坑法
 	//int keyIndex = PartSort_RLHands(a, left, right);//左右指针
+	int keyIndex = PartSort_FBHands(a, left, right);//挖坑法
 
 
 	//把[left,right]分成以下区间
