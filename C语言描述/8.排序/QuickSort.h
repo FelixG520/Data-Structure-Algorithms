@@ -1,5 +1,6 @@
 #pragma once
 #include "Sort.h"
+#include "Stack.h"
 //快速排序方法
 void QuickSort(int* a, int left, int right);//挖坑法
 void QuickSort2(int* a, int left, int right);//左右指针法
@@ -19,3 +20,6 @@ int PartSort_FBHands(int* a, int left, int right);
 int GetMidIndex(int* a, int left, int right);//三数取中
 void QuickSort_Mid_Minizone(int* a, int left, int right);//小区间优化
 void TestQuickSort_optimize();
+
+//非递归
+void QuickSortNonR(int* a, int n);

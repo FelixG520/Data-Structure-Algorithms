@@ -43,11 +43,13 @@ void TestOP()
 	int end5 = clock();
 
 	int begin6 = clock();
-	QuickSort_Conformity(a6, 0, N - 1);
+	//QuickSort_Conformity(a6, 0, N - 1);
+	QuickSortNonR(a6,N);
 	int end6 = clock(); 
 
 	int begin7 = clock();
-	MergeSort(a7, N);
+	//MergeSort(a7, N);
+	MergeSortNonR(a7, N);
 	int end7 = clock();
 
 	printf("InsertSort:%d\n", end1 - begin1);

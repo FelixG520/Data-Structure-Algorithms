@@ -1,6 +1,5 @@
 #include "QuickSort.h"
 
-
 //ÍÚ¿Ó·¨
 int PartSort_Trenching(int* a, int left, int right)
 {

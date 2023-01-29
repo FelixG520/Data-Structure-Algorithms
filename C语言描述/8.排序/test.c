@@ -26,6 +26,9 @@ int main()
 	//TestQuickSort_optimize();
 	//TestMergeSort();
 
+	//TestQuickSortNonR();
+	//TestMergeSortNonR();
+
 
 	// 测试排序的性能对比
 	TestOP();
