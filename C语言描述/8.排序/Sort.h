@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#define N 1000000
+#define N 100000
 
 
 void InsertSort(int* a, int n);//≤Â»Î≈≈–Ú
@@ -20,6 +20,7 @@ void BubbleSort(int* a, int n);//√∞≈›≈≈–Ú
 void MergeSort(int* a, int n);//πÈ≤¢≈≈–Ú
 void MergeSortNonR(int* a, int n);//πÈ≤¢≈≈–Ú∑«µ›πÈ
 
+void CountSort(int* a, int n);//º∆ ˝≈≈–Ú
 
 void TestInsertSort();
 void TestShellSort();
@@ -27,7 +28,7 @@ void TestHeapSort();
 void TestSelectSort();
 void TestBubbleSort();
 void TestQuickSort();
-
+void TestCountSort();
 
 
 void PrintArray(int* a, int n);//¥Ú”°
